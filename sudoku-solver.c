@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -7,7 +6,7 @@
 void sudokuSolver(int [][9]);
 bool isFull(int [][9]);
 void printGrid(int [][9]);
-int * possibleEntries(int [][9], int , int );
+int *possibleEntries(int [][9], int, int );
 
 clock_t start, end;
 int main(void)
@@ -39,7 +38,7 @@ void sudokuSolver(int sudokuGrid[][9])
         return;
     }
 
-    //iterates through the sudoku grid, and finds an unassigned cell
+    // iterates through the sudoku grid, and finds an unassigned cell
     for(row = 0; row < 9; row++)
     {
         for(coloumn = 0; coloumn < 9; coloumn++)
@@ -71,8 +70,7 @@ void sudokuSolver(int sudokuGrid[][9])
         }
     }
 
-    //backtracking, if the possible values are not providing
-    // the correct answer.
+    //backtracking, if there are no more possible values for given i, j.
     sudokuGrid[i][j] = 0;
 }
 
