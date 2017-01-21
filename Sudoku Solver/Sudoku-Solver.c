@@ -13,7 +13,7 @@ int main(void)
 {
     start = clock();
     int row, coloumn;
-    int sudokuGrid[9][9];
+    int sudokuGrid[9][9] = {0};
     printf("\tEnter The Elements\n\n");
 
     for(row = 0; row < 9; row++)
@@ -21,6 +21,7 @@ int main(void)
             scanf("%d", &sudokuGrid[row][coloumn]);
 
     sudokuSolver(sudokuGrid);   // call to the solving function
+    printf("No solution exists for this puzzle.\n");
 }
 
 
@@ -100,20 +101,23 @@ void printGrid(int sudokuGrid[][9])
     for(row = 0; row < 9; row++)
     {
         if(row % 3 == 0)
-            printf(" ---------------------------\n");
+           printf(" +--------+--------+-------+\n");
 
         for(coloumn = 0; coloumn < 9; coloumn++)
         {
             if(coloumn % 3 == 0)
                 printf(" | ");
+
             printf("%d ", sudokuGrid[row][coloumn]);
+
             if(coloumn == 8)
                 printf("|");
         }
 
         printf("\n");
     }
-    printf(" ---------------------------\n");
+    printf(" +--------+--------+-------+\n\n");
+     exit(0);
 }
 
 
