@@ -6,5 +6,3 @@ A basic version of Sudoku solver by back tracking in C.
 Sudoku Generator
 
 Better formatting
-
-GUI.
