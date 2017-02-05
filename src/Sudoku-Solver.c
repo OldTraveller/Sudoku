@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -35,8 +36,9 @@ void sudokuSolver(int sudokuGrid[][9])
     // else proceed further.
     if(isFull(sudokuGrid))
     {
-        printGrid(sudokuGrid);
-        return;
+        end = clock();
+        printf("\n\n\tSOLVED !\n   (%lf seconds)\n", (double)(end - start)/CLOCKS_PER_SEC);
+        exit(0);
     }
 
     // iterates through the sudoku grid, and finds an unassigned cell
@@ -67,6 +69,7 @@ void sudokuSolver(int sudokuGrid[][9])
         if(possibilities[row] != 0)
         {
             sudokuGrid[i][j] = possibilities[row];
+            printGrid(sudokuGrid);
             sudokuSolver(sudokuGrid);               //recursive call to sudokuSolver.
         }
     }
@@ -95,10 +98,8 @@ bool isFull(int sudokuGrid[][9])
 // prints the solution of the sudoku puzzle
 void printGrid(int sudokuGrid[][9])
 {
-    end = clock();
     int row, coloumn;
-    printf("\n\n\tSOLVED !\n   (%lf seconds)\n", (double)(end - start)/CLOCKS_PER_SEC);
-
+    system("clear");
     for(row = 0; row < 9; row++)
     {
         if(row % 3 == 0)
@@ -118,7 +119,8 @@ void printGrid(int sudokuGrid[][9])
         printf("\n");
     }
     printf(" +--------+--------+-------+\n\n");
-    exit(0);
+    usleep(100000);
+    // exit(0);
 }
 
 
