@@ -36,7 +36,6 @@ void sudokuSolver(int sudokuGrid[][9])
     if(isFull(sudokuGrid))
     {
         printGrid(sudokuGrid);
-        return;
     }
 
     // iterates through the sudoku grid, and finds an unassigned cell
