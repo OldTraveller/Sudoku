@@ -2,14 +2,14 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-bool checkSolution(int [][9], int, int, int);
+bool checkSolution(int grid[][9], int valueAtCell, int row, int col);
 
 int main(void)
 {
     int i, j;
     int grid[9][9];
 
-    printf("\nWant to check your sudoku solution ?\n\n");
+    printf("\nInput the solved sudoku puzzle\n\n");
 
     for(i = 0; i < 9; i++)
     {
@@ -51,11 +51,13 @@ bool checkSolution(int grid[][9],int valueAtCell, int i, int j)
     }
 
     for(int tempi = 0, row = i - i % 3; tempi < 3; tempi++, row++)
-    for(int tempj = 0, cols = j - j % 3; tempj < 3; tempj++, cols++)
     {
-        if(grid[row][cols] == valueAtCell && row != i && cols != j)
+        for(int tempj = 0, cols = j - j % 3; tempj < 3; tempj++, cols++)
         {
-            return false;
+            if(grid[row][cols] == valueAtCell && row != i && cols != j)
+            {
+                return false;
+            }
         }
     }
 

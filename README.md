@@ -1,12 +1,13 @@
-# Sudoku
+#Sudoku
 A basic version of Sudoku solver by back tracking in C.
 
-Compile and run the Sudoku-Solver.c file on a gcc compiler, input the unsolved Sudoku, replacing the spaces with the number 0, the puzzle should be solved and output will be displayed.
+#Usage
+complie and run Sudoku-Solver.c file to solve a sudoku puzzle, input the unsolved Sudoku, replacing the spaces with the number 0.
 
-Use Solution-Checker.c file to check the solution obtained. Compile and run the Solution-Checker.c file, input the solved sudoku and wait for the verdict.
+$ gcc Sudoku-Solver.c -o solve
+$ ./solve
 
-# TO DO
+compile and run Sudoku-Checker.c file to check the solution
 
-Sudoku Generator
-
-Better formatting
+$ gcc Sudoku-Checker.c -o check
+$ ./check

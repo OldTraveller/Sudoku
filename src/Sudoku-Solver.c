@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-bool isFull(int [][9]);
-void printGrid(int [][9]);
-void sudokuSolver(int [][9]);
-int *possibleEntries(int [][9], int, int );
+bool isFull(int grid[][9]);
+void printGrid(int grid[][9]);
+void sudokuSolver(int grid[][9]);
+int *possibleEntries(int grid[][9], int i, int j);
 
 clock_t start, end;
 int main(void)
