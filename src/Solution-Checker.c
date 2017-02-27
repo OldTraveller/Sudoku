@@ -12,24 +12,17 @@ int main(void)
     printf("\nInput the solved sudoku puzzle\n\n");
 
     for(i = 0; i < 9; i++)
-    {
         for(j = 0; j < 9; j++)
-        {
             scanf("%d", &grid[i][j]);
-        }
-    }
 
     for(i = 0; i < 9; i++)
-    {
         for(j = 0; j < 9; j++)
-        {
             if(!(checkSolution(grid, grid[i][j], i, j)))
             {
-                printf("\nOops! something is wrong.\n");
+                printf("\nIncorrect Solution!\n");
                 exit(0);
             }
-        }
-    }
+
     printf("\nYour solution is correct!\n");
 }
 
@@ -39,27 +32,17 @@ bool checkSolution(int grid[][9],int valueAtCell, int i, int j)
     int cols = j;
 
     for(row = 0; row < 9; row++)
-    {
-        if(grid[row][j] == valueAtCell && row != i)
+        if(row != i && grid[row][j] == valueAtCell)
             return false;
-    }
 
     for(cols = 0; cols < 9; cols++)
-    {
-        if(grid[i][cols] == valueAtCell && cols != j)
+        if(cols != j && grid[i][cols] == valueAtCell)
             return false;
-    }
 
     for(int tempi = 0, row = i - i % 3; tempi < 3; tempi++, row++)
-    {
         for(int tempj = 0, cols = j - j % 3; tempj < 3; tempj++, cols++)
-        {
-            if(grid[row][cols] == valueAtCell && row != i && cols != j)
-            {
+            if(row != i && cols != j && grid[row][cols] == valueAtCell)
                 return false;
-            }
-        }
-    }
 
     return true;
 }

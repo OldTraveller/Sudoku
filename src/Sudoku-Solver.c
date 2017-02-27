@@ -9,18 +9,22 @@ void sudokuSolver(int grid[][9]);
 int *possibleEntries(int grid[][9], int i, int j);
 
 clock_t start, end;
+
 int main(void)
 {
     start = clock();
+
     int row, coloumn;
     int sudokuGrid[9][9] = {0};
+
     printf("\tEnter The Elements\n\n");
 
     for(row = 0; row < 9; row++)
         for(coloumn = 0; coloumn < 9; coloumn++)
             scanf("%d", &sudokuGrid[row][coloumn]);
 
-    sudokuSolver(sudokuGrid);   // call to the solving function
+    sudokuSolver(sudokuGrid);
+
     printf("No solution exists for this puzzle.\n");
 }
 
@@ -34,9 +38,7 @@ void sudokuSolver(int sudokuGrid[][9])
     // if there are no unassigned cells then sudoku is solved.
     // else proceed further.
     if(isFull(sudokuGrid))
-    {
         printGrid(sudokuGrid);
-    }
 
     // iterates through the sudoku grid, and finds an unassigned cell
     for(row = 0; row < 9; row++)
@@ -51,6 +53,7 @@ void sudokuSolver(int sudokuGrid[][9])
                 break;
             }
         }
+
         if(flag == 1)
             break;
     }
@@ -83,10 +86,8 @@ bool isFull(int sudokuGrid[][9])
 
     for(row = 0; row < 9; row++)
         for(coloumn = 0; coloumn < 9; coloumn++)
-        {
             if(sudokuGrid[row][coloumn] == 0)
                 return false;
-        }
 
     return true;
 }
@@ -116,6 +117,7 @@ void printGrid(int sudokuGrid[][9])
 
         printf("\n");
     }
+
     printf(" +--------+--------+-------+\n\n");
     exit(0);
 }
@@ -140,19 +142,15 @@ int * possibleEntries(int sudokuGrid[][9], int i, int j)
     // if its a fixed/assigned value the possibility of
     //that value becomes 0.
     for(coloumn = 0; coloumn < 9; coloumn++)
-    {
         if(sudokuGrid[i][coloumn] != 0)
             possibilities[sudokuGrid[i][coloumn]] = 0;
-    }
 
     //checks for possible values along the coloumn.
     // if its a fixed/assigned value the possibility of
     //that value becomes 0.
     for(row = 0; row < 9; row++)
-    {
         if(sudokuGrid[row][j] != 0)
             possibilities[sudokuGrid[row][j]] = 0;
-    }
 
     //checks for possible values in a sub sudoku grid,i.e,
     // 3 X 3 grid.The expression, i - i % 3, is used for
@@ -161,20 +159,13 @@ int * possibleEntries(int sudokuGrid[][9], int i, int j)
     // the row index for the start of the second 3 x 3 box.
     for(int tempi = 0, row = i - i % 3; tempi < 3; tempi++, row++)
         for(int tempj = 0, coloumn = j - j % 3; tempj < 3; tempj++, coloumn++)
-        {
             if(sudokuGrid[row][coloumn] != 0)
                 possibilities[sudokuGrid[row][coloumn]] = 0;
-        }
 
     // assign the possible values to the possibilities array.
     for(row = 1; row < 10; row++)
-    {
         if(possibilities[row] !=0)
             possibilities[row] = row;
-
-        else
-            possibilities[row] = 0;
-    }
 
     return possibilities;
 }
