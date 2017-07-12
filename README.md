@@ -1,7 +1,7 @@
-#Sudoku
+# Sudoku
 A basic version of Sudoku solver by back tracking in C.
 
-##Usage
+## Usage
 complie and run **Sudoku-Solver.c** file to solve a sudoku puzzle, input the unsolved Sudoku, replacing the spaces with the number 0.
 ```
 $ gcc Sudoku-Solver.c -o solve
